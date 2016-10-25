@@ -188,3 +188,6 @@ bindsym $mod+x exec lock
 
 # Setting wallpaper
 exec_always feh --bg-scale ~/Pictures/Wallpaper.jpg
+
+# Executing network monitor
+exec_always nm-applet  
