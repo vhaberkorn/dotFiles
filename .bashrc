@@ -26,6 +26,7 @@ alias ethRestart='ifconfig eth0 down; ifconfig eth0 up'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 
 ## EXTRACT
 extract () {
