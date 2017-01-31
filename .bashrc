@@ -1,11 +1,31 @@
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 
+## HISTORY
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=99999
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 
 ## ALIASES
 alias ll='ls -lah --color=auto'
-alias la='ls -A'
-alias l='ls -CF'
+alias l='ls -lh --color=auto'
+alias ..='cd ..'
+alias cls='clear'
+alias ethRestart='ifconfig eth0 down; ifconfig eth0 up'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 ## EXTRACT
 extract () {
@@ -37,3 +57,13 @@ PS1='\[\033[0;31m\]\342\224\214\342\224\200$([[ $? != 0 ]] && echo "[\[\033[0;31
 ## TRANSFER.SH
 transfer() { if [ $# -eq 0 ]; then echo "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md"; return 1; fi 
 tmpfile=$( mktemp -t transferXXX ); if tty -s; then basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g'); curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile; else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; fi; cat $tmpfile; rm -f $tmpfile; } 
+
+## TERMBIN
+alias termbin='nc termbin.com 9999'
+
+### BASE CONVERSION
+h2d(){ echo "ibase=16; $@" | bc; }
+d2h(){ echo "obase=16; $@" | bc; }
+
+## EXTERNAL IP
+alias external_ip='curl -s http://ipinfo.io/ip'
