@@ -70,6 +70,7 @@ d2h(){ echo "obase=16; $@" | bc; }
 alias external_ip='curl -s http://ipinfo.io/ip'
 
 ## TEST INTERNET CONNECTION
+# needs python and speedtest-cli 
 test_net(){
 if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
   echo "IPv4 is up"
@@ -78,12 +79,15 @@ if ping -q -c 1 -W 1 8.8.8.8 >/dev/null; then
   else
     echo "DNS is not responding"
   fi
-else
-  echo "IPv4 is down"
-fi
-case "$(curl -s --max-time 2 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
+  case "$(curl -s --max-time 2 -I http://google.com | sed 's/^[^ ]*  *\([0-9]\).*/\1/; 1q')" in
   [23]) echo "HTTP connectivity is up";;
   5) echo "The web proxy won't let us through";;
   *) echo "The network is down or very slow";;
-esac
-}     
+  esac
+  echo "Testing speed..."
+  speedtest-cli --simple
+else
+  echo "IPv4 is down"
+fi
+}
+
