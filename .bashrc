@@ -16,6 +16,12 @@ HISTSIZE=99999
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
 ## ALIASES
 alias ll='ls -lah --color=auto'
