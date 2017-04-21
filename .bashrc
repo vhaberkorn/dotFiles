@@ -33,7 +33,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
-alias msfconsole='msfconsole -d db_connect -y /opt/framework/config/database.yml'
+#alias msfconsole='msfconsole -d db_connect -y /opt/framework/config/database.yml'
+alias msfconsole='msfconsole -d db_connect -y /usr/share/metasploit-framework/config/database.yml'
+
 
 ## EXTRACT
 extract () {
