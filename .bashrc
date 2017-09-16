@@ -35,6 +35,12 @@ alias egrep='egrep --color=auto'
 alias rot13="tr '[A-Za-z]' '[N-ZA-Mn-za-m]'"
 #alias msfconsole='msfconsole -d db_connect -y /opt/framework/config/database.yml'
 alias msfconsole='msfconsole -d db_connect -y /usr/share/metasploit-framework/config/database.yml'
+alias watch='watch -n0.1'
+alias du='du -kh --max-depth=1'
+alias df='df -h'                                                                                                                                                                              
+alias netstat_watch='sudo watch -n 0.1 netstat -tunapl'
+alias route_watch='sudo watch -n 0.1 route -n'
+alias ifconfig_watch='sudo watch -n 0.1 ifconfig'
 
 
 ## EXTRACT
