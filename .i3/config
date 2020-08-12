@@ -211,3 +211,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Autolock
 exec --no-startup-id xautolock -time 2 -locker physlock -ms
+
+# Moving containers to different outputs
+bindsym $mod+Shift+greater move container to output right
+bindsym $mod+Shift+less move container to output left
+
